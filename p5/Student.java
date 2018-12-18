@@ -1,8 +1,9 @@
-package com.oukele.p2;
+package com.oukele.p5;
 
-public class Student implements Exam {
+public class Student {
 
     public void exam(){
         System.out.println("奋笔疾书，完成考试啦");
     }
+
 }

@@ -29,7 +29,43 @@
 ~~~
 #### 静态代理
 ~~~
-  
+public interface Exam {//考试的接口
+    void exam();
+}
+
+public class Student implements Exam {
+    
+    public void exam(){
+        System.out.println("奋笔疾书，完成考试啦");
+    }
+}
+
+public class Cheater implements Exam {
+　　//被代理的对象
+    private final Exam student;
+
+    public Cheater(Exam student){
+        this.student = student;
+    }
+
+    public void exam() {
+        System.out.println("考试的时候唱了一首凉凉，差点被劝退了。");
+        student.exam();//调用Student类的方法
+    }
+}
+
+public static void main(String[] args) {
+
+    Exam xiaoMing = new Student();
+    xiaoMing.exam();//原来的行为
+
+    System.out.println("-----------下面是代理的行为------------");
+
+    Exam cheater = new Cheater(xiaoMing);
+    cheater.exam();//代理的行为
+
+}
+
 ~~~
 #### jdk代理
 ~~~
